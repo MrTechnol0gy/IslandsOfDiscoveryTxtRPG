@@ -1,13 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Text.Json;
 
 namespace IslandsOfDiscoveryTxtRPG
 {
     internal class Globals
     {
+        public string Difficulty { get; set; } // Add a property for difficulty
+
+
+        public void LoadDifficultySettings()
+        {
+            // Load settings from the appropriate JSON file based on the selected difficulty
+            string filePath = $"Globals_{Difficulty}.json";
+            string jsonData = File.ReadAllText(filePath);
+            var settings = JsonSerializer.Deserialize<Globals>(jsonData);
+
+            // Copy the settings to the current instance
+            CopySettings(settings);
+        }
+
+        private void CopySettings(Globals source)
+        {
+            // Copy settings from source to current instance
+            playerBasehealth = source.playerBasehealth;
+            playerBasestrength = source.playerBasestrength;
+            maxEnemies = source.maxEnemies;
+            // ... and so on for other properties
+        }
         // Game Management
         public bool gameOver = false;
         public Random random = new Random();        
