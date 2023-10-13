@@ -46,27 +46,27 @@ namespace IslandsOfDiscoveryTxtRPG
 
         public void InitEnemiesList(Map map, ItemManager itemManager, HUD hud, CursorController cursorController, Globals globals)
         {            
-            for (int j = 0; j < Globals.treasureChestAmountToSpawn; j++)
+            for (int j = 0; j < globals.treasureChestAmountToSpawn; j++)
             {
                 EnemiesList.Add(new TreasureChest(map, itemManager, hud, cursorController, globals));
                 globals.enemyID += 1;
             }
-            for (int j = 0; j < Globals.slimeAmountToSpawn; j++)
+            for (int j = 0; j < globals.slimeAmountToSpawn; j++)
             {
                 EnemiesList.Add(new Slime(map, itemManager, hud, cursorController, globals));
                 globals.enemyID += 1;
             } 
-            for (int j = 0; j < Globals.wyvernAmountToSpawn; j++)
+            for (int j = 0; j < globals.wyvernAmountToSpawn; j++)
             {
                 EnemiesList.Add(new Wyvern(map, itemManager, hud, cursorController, globals));
                 globals.enemyID += 1;
             } 
-            for (int j = 0; j < Globals.seaserpentAmountToSpawn; j++)
+            for (int j = 0; j < globals.seaserpentAmountToSpawn; j++)
             {
                 EnemiesList.Add(new SeaSerpent(map, itemManager, hud, cursorController, globals));
                 globals.enemyID += 1;
             }                    
-            for (int j = 0; j < Globals.dragonAmountToSpawn; j++)
+            for (int j = 0; j < globals.dragonAmountToSpawn; j++)
             {
                 EnemiesList.Add(new Dragon(map, itemManager, hud, cursorController, globals));
                 globals.enemyID += 1;

@@ -1,100 +1,161 @@
 ﻿using System;
 using System.IO;
 using System.Text.Json;
+using System.Xml.Linq;
 
 namespace IslandsOfDiscoveryTxtRPG
 {
     internal class Globals
     {
+
         public string Difficulty { get; set; } // Add a property for difficulty
-
-
-        public void LoadDifficultySettings()
-        {
-            // Load settings from the appropriate JSON file based on the selected difficulty
-            string filePath = $"Globals_{Difficulty}.json";
-            string jsonData = File.ReadAllText(filePath);
-            var settings = JsonSerializer.Deserialize<Globals>(jsonData);
-
-            // Copy the settings to the current instance
-            CopySettings(settings);
-        }
-
-        private void CopySettings(Globals source)
-        {
-            // Copy settings from source to current instance
-            playerBasehealth = source.playerBasehealth;
-            playerBasestrength = source.playerBasestrength;
-            maxEnemies = source.maxEnemies;
-            // ... and so on for other properties
-        }
         // Game Management
         public bool gameOver = false;
         public Random random = new Random();        
 
         // Player Information
-        public const string playerName = "Player";
-        public const string playerCharacter = "P";
-        public const string playerCorpse = "X";
+        public string playerName { get; set; }
+        public string playerCharacter { get; set; }
+        public string playerCorpse { get; set; }
+        public int playerLevel { get; set; }
+        public int playerBasehealth { get; set; }
+        public int playerBasestrength { get; set; }
         public bool isPlayerDead = false;
-        public int playerLevel = 1;
-        public const int playerBasehealth = 25;        
-        public const int playerBasestrength = 5;
 
         // All Enemy Information
         public int enemyID = 0;
         public const string enemyCorpse = "x";
-        public const int maxEnemies = 40;             // this should equal the total amount of enemies to spawn in each enemy category
-        
+        public int maxEnemies { get; set; }             // this should equal the total amount of enemies to spawn in each enemy category
+
         // Enemy - Slime
-        public const string slimeName = "Slime";
-        public const string slimeCharacter = "s";
-        public const char slimeSpawnPoint = '`';
-        public const int slimeAmountToSpawn = 26;
-        public const int slimeBasehealth = 2;        
-        public const int slimeBasestrength = 1;
-        public const int slimeXPValue = 2;
-        public const int slimeEnergyToMove = 200;
+        public string slimeName { get; set; }
+        public string slimeCharacter { get; set; }
+        public char slimeSpawnPoint { get; set; }
+        public int slimeAmountToSpawn { get; set; }
+        public int slimeBasehealth { get; set; }
+        public int slimeBasestrength { get; set; }
+        public int slimeXPValue { get; set; }
+        public int slimeEnergyToMove { get; set; }
 
         // Enemy - Wyvern
-        public const string wyvernName = "Wyvern";
-        public const string wyvernCharacter = "W";
-        public const char wyvernSpawnPoint = '^';
-        public const int wyvernAmountToSpawn = 5;
-        public const int wyvernBasehealth = 12;        
-        public const int wyvernBasestrength = 4;
-        public const int wyvernXPValue = 5;
-        public const int wyvernEnergyToMove = 100;
+        public string wyvernName { get; set; }
+        public string wyvernCharacter { get; set; }
+        public char wyvernSpawnPoint { get; set; }
+        public int wyvernAmountToSpawn { get; set; }
+        public int wyvernBasehealth { get; set; }
+        public int wyvernBasestrength { get; set; }
+        public int wyvernXPValue { get; set; }
+        public int wyvernEnergyToMove { get; set; }
 
         // Enemy - Sea Serpent
-        public const string seaserpentName = "SeaSerpent";
-        public const string seaserpentCharacter = "S";
-        public const char seaserpentSpawnPoint = '~';
-        public const int seaserpentAmountToSpawn = 5;
-        public const int seaserpentBasehealth = 22;        
-        public const int seaserpentBasestrength = 8;
-        public const int seaserpentXPValue = 12;
-        public const int seaserpentEnergyToMove = 125;
+        public string seaserpentName { get; set; }
+        public string seaserpentCharacter { get; set; }
+        public char seaserpentSpawnPoint { get; set; }
+        public int seaserpentAmountToSpawn { get; set; }
+        public int seaserpentBasehealth { get; set; }
+        public int seaserpentBasestrength { get; set; }
+        public int seaserpentXPValue { get; set; }
+        public int seaserpentEnergyToMove { get; set; }
 
         // Enemy - Dragon
-        public const string dragonName = "Dragon";
-        public const string dragonCharacter = "D";
-        public const char dragonSpawnPoint = 'C';
-        public const int dragonAmountToSpawn = 1; 
-        public const int dragonBasehealth = 60;        
-        public const int dragonBasestrength = 20;
-        public const int dragonXPValue = 200;
-        public const int dragonEnergyToMove = 100;
+        public string dragonName { get; set; }
+        public string dragonCharacter { get; set; }
+        public char dragonSpawnPoint { get; set; }
+        public int dragonAmountToSpawn { get; set; }
+        public int dragonBasehealth { get; set; }
+        public int dragonBasestrength { get; set; }
+        public int dragonXPValue { get; set; }
+        public int dragonEnergyToMove { get; set; }
 
         // Enemy - Treasure Chest
-        public const string treasureName = "Treasure";
-        public const string treasureCharacter = "T";
-        public const char treasureSpawnPoint = '*';
-        public const int treasureChestAmountToSpawn = 3;
-        public const int treasureBasehealth = 10;        
-        public const int treasureBasestrength = 0;
-        public const int treasureXPValue = 0;
-        public const int treasureEnergyToMove = 10000;
+        public string treasureName { get; set; }
+        public string treasureCharacter { get; set; }
+        public char treasureSpawnPoint { get; set; }
+        public int treasureChestAmountToSpawn { get; set; }
+        public int treasureBasehealth { get; set; }
+        public int treasureBasestrength { get; set; }
+        public int treasureXPValue { get; set; }
+        public int treasureEnergyToMove { get; set; }
+
+        public void LoadDifficultySettings(Globals target)
+        {
+            // Load settings from the appropriate JSON file based on the selected difficulty
+            string filePath = "DifficultySettings/IsleOfDiscoveryNormalDifficultySettings.txt";
+            string jsonData = File.ReadAllText(filePath);
+            var settings = JsonSerializer.Deserialize<Globals>(jsonData);
+
+            // Copy the settings to the current instance
+            target.CopySettings(settings);
+        }
+
+        private void CopySettings(Globals source)
+        {
+            // Copy settings from source to current instance
+            // Player Data
+            playerName = source.playerName;
+            playerCharacter = source.playerCharacter;
+            playerCorpse = source.playerCorpse;
+            playerLevel = source.playerLevel;
+            playerBasehealth = source.playerBasehealth;
+            playerBasestrength = source.playerBasestrength;
+
+            // Slime Data
+            slimeName = source.slimeName;
+            slimeCharacter = source.slimeCharacter;
+            slimeSpawnPoint = source.slimeSpawnPoint;
+            slimeAmountToSpawn = source.slimeAmountToSpawn;
+            slimeBasehealth = source.slimeBasehealth;
+            slimeBasestrength = source.slimeBasestrength;
+            slimeXPValue = source.slimeXPValue;
+            slimeEnergyToMove = source.slimeEnergyToMove;
+
+            // Wyvern Data
+            wyvernName = source.wyvernName;
+            wyvernCharacter = source.wyvernCharacter;
+            wyvernSpawnPoint = source.wyvernSpawnPoint;
+            wyvernAmountToSpawn = source.wyvernAmountToSpawn;
+            wyvernBasehealth = source.wyvernBasehealth;
+            wyvernBasestrength = source.wyvernBasestrength;
+            wyvernXPValue = source.wyvernXPValue;
+            wyvernEnergyToMove = source.wyvernEnergyToMove;
+
+            // SeaSerpent Data
+            seaserpentName = source.seaserpentName;
+            seaserpentCharacter = source.seaserpentCharacter;
+            seaserpentSpawnPoint = source.seaserpentSpawnPoint;
+            seaserpentAmountToSpawn = source.seaserpentAmountToSpawn;
+            seaserpentBasehealth = source.seaserpentBasehealth;
+            seaserpentBasestrength = source.seaserpentBasestrength;
+            seaserpentXPValue = source.seaserpentXPValue;
+            seaserpentEnergyToMove = source.seaserpentEnergyToMove;
+
+            // Dragon Data
+            dragonName = source.dragonName;
+            dragonCharacter = source.dragonCharacter;
+            dragonSpawnPoint = source.dragonSpawnPoint;
+            dragonAmountToSpawn = source.dragonAmountToSpawn;
+            dragonBasehealth = source.dragonBasehealth;
+            dragonBasestrength = source.dragonBasestrength;
+            dragonXPValue = source.dragonXPValue;
+            dragonEnergyToMove = source.dragonEnergyToMove;
+
+            // Treasure Chest Data
+            treasureName = source.treasureName;
+            treasureCharacter = source.treasureCharacter;
+            treasureSpawnPoint = source.treasureSpawnPoint;
+            treasureBasehealth = source.treasureBasehealth;
+            treasureBasestrength = source.treasureBasestrength;
+            treasureXPValue = source.treasureXPValue;
+            treasureEnergyToMove = source.treasureEnergyToMove;
+
+            maxEnemies = CalculateMaxEnemies();
+        }
+
+        private int CalculateMaxEnemies()
+        {
+            int value = slimeAmountToSpawn + wyvernAmountToSpawn + seaserpentAmountToSpawn + dragonAmountToSpawn + treasureChestAmountToSpawn;
+            return value;
+        }
 
         // Maps Information
         public const string worldMap = "Maps_and_Overlays/OverworldMap_01.txt";

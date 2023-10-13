@@ -10,14 +10,14 @@ namespace IslandsOfDiscoveryTxtRPG
     {
         public Dragon(Map map, ItemManager itemManager, HUD hud, CursorController cursorController, Globals globals) : base(map, itemManager, hud, cursorController, globals)
         {
-            Name = Globals.dragonName;
-            character = Globals.dragonCharacter;            
-            Health = Globals.dragonBasehealth;
-            Strength = Globals.dragonBasestrength;
-            XpValue = Globals.dragonXPValue;
-            energyToMove = Globals.dragonEnergyToMove;
+            Name = globals.dragonName;
+            character = globals.dragonCharacter;            
+            Health = globals.dragonBasehealth;
+            Strength = globals.dragonBasestrength;
+            XpValue = globals.dragonXPValue;
+            energyToMove = globals.dragonEnergyToMove;
             myID = globals.enemyID;
-            mySpawnTile = Globals.dragonSpawnPoint;
+            mySpawnTile = globals.dragonSpawnPoint;
             base.map = map;
             base.itemManager = itemManager;
             base.hud = hud;

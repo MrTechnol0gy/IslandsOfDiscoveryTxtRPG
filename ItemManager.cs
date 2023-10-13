@@ -9,7 +9,7 @@ namespace IslandsOfDiscoveryTxtRPG
 {
     internal class ItemManager
     {
-        public Globals globals;               
+        private Globals globals;               
         
         public List<string> MasterTreasureList;     // Master List of all treasure, generated on start
         public List<string> PlayerInventory;        // Player's inventory
@@ -20,7 +20,7 @@ namespace IslandsOfDiscoveryTxtRPG
             this.globals = globals;
             MasterTreasureList = new List<string>();
             PlayerInventory = new List<string>();
-            EnemyInventory = new List<string>[Globals.maxEnemies];
+            EnemyInventory = new List<string>[globals.maxEnemies];
                         
             InitTreasureInv();            
         }        
@@ -29,11 +29,11 @@ namespace IslandsOfDiscoveryTxtRPG
         {
             MasterTreasureList.Add("boat");
             MasterTreasureList.Add("key");
-            for (int i = 0; i < Globals.maxEnemies * 2; i++)    // adds an amount of potions based on number of enemies
+            for (int i = 0; i < globals.maxEnemies * 2; i++)    // adds an amount of potions based on number of enemies
             {
                 MasterTreasureList.Add("potion");
             }
-            for (int j = 0; j < Globals.maxEnemies * 5; j++)    // adds an amount of gold based on number of enemies
+            for (int j = 0; j < globals.maxEnemies * 5; j++)    // adds an amount of gold based on number of enemies
             {
                 MasterTreasureList.Add("gold");
             }
@@ -45,7 +45,7 @@ namespace IslandsOfDiscoveryTxtRPG
 
             switch (name)
             {
-                case Globals.treasureName:
+                case "Treasure":
                     int treasureRandNum = globals.random.Next(2, 5);                                    // the amount of items the enemy will have
                     EnemyInventory[id] = new List<string>();
                     for (int x = 0; x < treasureRandNum; x++)
@@ -74,8 +74,8 @@ namespace IslandsOfDiscoveryTxtRPG
                         }
                     }
                     break;
-                case Globals.slimeName:                    
-                    int slimeRandNum = globals.random.Next(1, Globals.maxEnemies / 6);      // the amount of items the enemy will have
+                case "Slime":                    
+                    int slimeRandNum = globals.random.Next(1, globals.maxEnemies / 6);      // the amount of items the enemy will have
                     EnemyInventory[id] = new List<string>();
                     for (int x = 0; x < slimeRandNum; x++)
                     {
@@ -85,8 +85,8 @@ namespace IslandsOfDiscoveryTxtRPG
                     } 
                     break;
                     
-                case Globals.wyvernName:                    
-                    int wyvernRandNum = globals.random.Next(1, Globals.maxEnemies / 2);
+                case "Wyvern":                    
+                    int wyvernRandNum = globals.random.Next(1, globals.maxEnemies / 2);
                     EnemyInventory[id] = new List<string>();
                     for (int x = 0; x < wyvernRandNum; x++)
                     {
@@ -95,8 +95,8 @@ namespace IslandsOfDiscoveryTxtRPG
                         MasterTreasureList.Remove(MasterTreasureList.ElementAt(randNum));
                     }                    
                     break;
-                case Globals.seaserpentName:                    
-                    int seaserpentRandNum = globals.random.Next(1, Globals.maxEnemies);                    
+                case "SeaSerpent":                    
+                    int seaserpentRandNum = globals.random.Next(1, globals.maxEnemies);                    
                     EnemyInventory[id] = new List<string>();
                     for (int x = 0; x < seaserpentRandNum; x++)
                     {
@@ -105,7 +105,7 @@ namespace IslandsOfDiscoveryTxtRPG
                         MasterTreasureList.Remove(MasterTreasureList.ElementAt(randNum));
                     }                    
                     break;
-                case Globals.dragonName: 
+                case "Dragon": 
                     EnemyInventory[id] = new List<string>();
                     for (int x = 0; x < MasterTreasureList.Count; x++)                      // The Dragon gets all remaining treasure on the list
                     {                        

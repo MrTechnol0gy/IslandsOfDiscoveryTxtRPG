@@ -1,0 +1,59 @@
+{
+	"Player": {
+		"playerName": "Player",
+		"playerBasestrength": 5,
+		"playerBasehealth": 20,
+		"playerLevel": 1,
+		"playerCorpse": "X",
+		"playerCharacter": "P"
+		},
+	"Slime":{
+		"slimeName": "Slime",
+		"slimeCharacter": "s",
+		"slimeSpawnPoint": '`',
+		"slimeAmountToSpawn": 26,
+		"slimeBasehealth": 2,
+		"slimeBasestrength": 1,
+		"slimeXPValue": 2,
+		"slimeEnergyToMove": 200
+		},
+	"Wyvern":{
+		"wyvernName": "Wyvern",
+		"wyvernCharacter": "W",
+		"wyvernSpawnPoint": '^',
+		"wyvernAmountToSpawn": 5,
+		"wyvernBasehealth": 12,
+		"wyvernBasestrength": 4,
+		"wyvernXPValue": 5,
+		"wyvernEnergyToMove": 100
+		},
+	"Dragon":{
+		"dragonName": "Dragon",
+		"dragonCharacter": "D",
+		"dragonSpawnPoint": 'C',
+		"dragonAmountToSpawn": 1,
+		"dragonBasehealth": 60,
+		"dragonBasestrength": 20,
+		"dragonXPValue": 200,
+		"dragonEnergyToMove": 100
+		},
+	"SeaSerpent":{
+		"seaserpentName": "Sea Serpent",
+		"seaserpentCharacter": "S",
+		"seaserpentSpawnPoint": '~',
+		"seaserpentAmountToSpawn": 5,
+		"seaserpentBasehealth": 22,
+		"seaserpentBasestrength": 8,
+		"seaserpentXPValue": 12,
+		"seaserpentEnergyToMove": 125
+		},
+	"TreasureChest":{
+		"treasureName": "Treasure Chest",
+		"treasureCharacter": "T",
+		"treasureSpawnPoint": '*',
+		"treasureAmountToSpawn": 3,
+		"treasureBasehealth": 10,
+		"treasureBasestrength": 0,
+		"treasureXPValue": 0,
+		"treasureEnergyToMove": 10000
+		},

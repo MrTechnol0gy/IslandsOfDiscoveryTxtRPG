@@ -11,14 +11,14 @@ namespace IslandsOfDiscoveryTxtRPG
     {
         public TreasureChest(Map map, ItemManager itemManager, HUD hud, CursorController cursorController, Globals globals) : base(map, itemManager, hud, cursorController, globals)
         {
-            Name = Globals.treasureName;
-            character = Globals.treasureCharacter;            
-            Health = Globals.treasureBasehealth;
-            Strength = Globals.treasureBasestrength;
-            XpValue = Globals.treasureXPValue;
-            energyToMove = Globals.treasureEnergyToMove;
+            Name = globals.treasureName;
+            character = globals.treasureCharacter;            
+            Health = globals.treasureBasehealth;
+            Strength = globals.treasureBasestrength;
+            XpValue = globals.treasureXPValue;
+            energyToMove = globals.treasureEnergyToMove;
             myID = globals.enemyID;
-            mySpawnTile = Globals.treasureSpawnPoint;
+            mySpawnTile = globals.treasureSpawnPoint;
             base.map = map;
             base.itemManager = itemManager;
             base.hud = hud;

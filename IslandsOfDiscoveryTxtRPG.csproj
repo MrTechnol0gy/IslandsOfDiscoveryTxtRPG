@@ -69,6 +69,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DifficultySettings\IsleOfDiscoveryNormalDifficultySettings.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Maps_and_Overlays\HudBorders.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

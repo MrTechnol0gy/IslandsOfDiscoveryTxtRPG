@@ -10,14 +10,14 @@ namespace IslandsOfDiscoveryTxtRPG
     {
         public Slime(Map map, ItemManager itemManager, HUD hud, CursorController cursorController, Globals globals) : base(map, itemManager, hud, cursorController, globals)
         {
-            Name = Globals.slimeName;
-            character = Globals.slimeCharacter;            
-            Health = Globals.slimeBasehealth;            
-            Strength = Globals.slimeBasestrength;
-            XpValue = Globals.slimeXPValue;            
-            energyToMove = Globals.slimeEnergyToMove;
+            Name = globals.slimeName;
+            character = globals.slimeCharacter;            
+            Health = globals.slimeBasehealth;            
+            Strength = globals.slimeBasestrength;
+            XpValue = globals.slimeXPValue;            
+            energyToMove = globals.slimeEnergyToMove;
             myID = globals.enemyID;
-            mySpawnTile = Globals.slimeSpawnPoint;
+            mySpawnTile = globals.slimeSpawnPoint;
             base.map = map;            
             base.itemManager = itemManager;
             base.hud = hud;

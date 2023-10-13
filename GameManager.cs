@@ -7,20 +7,26 @@ using System.Threading.Tasks;
 namespace IslandsOfDiscoveryTxtRPG
 {
     internal class GameManager
-    {        
-        static Globals globals = new Globals();
-        static Map map = new Map();
-        static HUD hud = new HUD();
-        static ItemManager itemManager = new ItemManager(globals);
-        //do not rearrange the order of these things - their constructors rely on timing of creation to function
-        static CursorController cursorController = new CursorController();       
-        static EnemyManager enemyManager = new EnemyManager(map, itemManager, hud, cursorController, globals);
-        static Player player = new Player(22, 14, map, player, itemManager, hud, cursorController, globals);
-        static CombatManager combatManager = new CombatManager(player, enemyManager, itemManager);
-
+    {    
         //Game Loop
         public void RunGame()
-        {            
+        {        
+            // Create an instance of Globals
+            Globals globals = new Globals();
+
+            // Load difficulty settings into the Globals instance
+            globals.LoadDifficultySettings(globals);
+
+            // Pass the Globals instance to the components that need it
+            Map map = new Map();
+            HUD hud = new HUD();
+            ItemManager itemManager = new ItemManager(globals);
+            CursorController cursorController = new CursorController();
+            EnemyManager enemyManager = new EnemyManager(map, itemManager, hud, cursorController, globals);
+            Player player = new Player(22, 14, map, null, itemManager, hud, cursorController, globals);
+            player = new Player(22, 14, map, player, itemManager, hud, cursorController, globals);
+            CombatManager combatManager = new CombatManager(player, enemyManager, itemManager);
+
             while (globals.gameOver == false)
             {
                 //updates                
