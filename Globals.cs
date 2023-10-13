@@ -102,7 +102,7 @@ namespace IslandsOfDiscoveryTxtRPG
             // Slime Data
             slimeName = source.slimeName;
             slimeCharacter = source.slimeCharacter;
-            slimeSpawnPoint = source.slimeSpawnPoint;
+            slimeSpawnPoint = source.slimeSpawnPoint.ToString()[0];
             slimeAmountToSpawn = source.slimeAmountToSpawn;
             slimeBasehealth = source.slimeBasehealth;
             slimeBasestrength = source.slimeBasestrength;
@@ -112,7 +112,7 @@ namespace IslandsOfDiscoveryTxtRPG
             // Wyvern Data
             wyvernName = source.wyvernName;
             wyvernCharacter = source.wyvernCharacter;
-            wyvernSpawnPoint = source.wyvernSpawnPoint;
+            wyvernSpawnPoint = source.wyvernSpawnPoint.ToString()[0];
             wyvernAmountToSpawn = source.wyvernAmountToSpawn;
             wyvernBasehealth = source.wyvernBasehealth;
             wyvernBasestrength = source.wyvernBasestrength;
@@ -122,7 +122,7 @@ namespace IslandsOfDiscoveryTxtRPG
             // SeaSerpent Data
             seaserpentName = source.seaserpentName;
             seaserpentCharacter = source.seaserpentCharacter;
-            seaserpentSpawnPoint = source.seaserpentSpawnPoint;
+            seaserpentSpawnPoint = source.seaserpentSpawnPoint.ToString()[0];
             seaserpentAmountToSpawn = source.seaserpentAmountToSpawn;
             seaserpentBasehealth = source.seaserpentBasehealth;
             seaserpentBasestrength = source.seaserpentBasestrength;
@@ -132,7 +132,7 @@ namespace IslandsOfDiscoveryTxtRPG
             // Dragon Data
             dragonName = source.dragonName;
             dragonCharacter = source.dragonCharacter;
-            dragonSpawnPoint = source.dragonSpawnPoint;
+            dragonSpawnPoint = source.dragonSpawnPoint.ToString()[0];
             dragonAmountToSpawn = source.dragonAmountToSpawn;
             dragonBasehealth = source.dragonBasehealth;
             dragonBasestrength = source.dragonBasestrength;
@@ -142,7 +142,7 @@ namespace IslandsOfDiscoveryTxtRPG
             // Treasure Chest Data
             treasureName = source.treasureName;
             treasureCharacter = source.treasureCharacter;
-            treasureSpawnPoint = source.treasureSpawnPoint;
+            treasureSpawnPoint = source.treasureSpawnPoint.ToString()[0];
             treasureBasehealth = source.treasureBasehealth;
             treasureBasestrength = source.treasureBasestrength;
             treasureXPValue = source.treasureXPValue;
