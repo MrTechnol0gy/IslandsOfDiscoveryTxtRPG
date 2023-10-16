@@ -9,7 +9,7 @@ namespace IslandsOfDiscoveryTxtRPG
 {
     internal abstract class Character                       //abstract prevents you from constructing this class on the field
     {
-        protected int basehealth, basestrength;        
+        protected int basestrength;        
         public int Health { get; set; }        
         public int Strength { get; set; }
         public string Name { get; set; }                    //name of character

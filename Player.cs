@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,18 +17,17 @@ namespace IslandsOfDiscoveryTxtRPG
         
         public Player(int x, int y, Map map, Player player, ItemManager itemManager, HUD hud, CursorController cursorController, Globals globals) : base(map, itemManager, hud, cursorController, globals)
         {
-            Name = globals.playerName;
+            Name = globals.PlayerName;
             posX = x;
             posY = y;
             oldPosX = x;
             oldPosY = y;
-            character = globals.playerCharacter;
-            corpse = globals.playerCorpse;
+            character = globals.PlayerCharacter;
+            corpse = globals.PlayerCorpse;
             dead = globals.isPlayerDead;
-            level = globals.playerLevel;
-            basehealth = globals.playerBasehealth;            
-            basestrength = globals.playerBasestrength;
-            Health = basehealth;            
+            level = globals.PlayerLevel;            
+            basestrength = globals.PlayerBasestrength;
+            Health = globals.PlayerBasehealth;            
             Strength = basestrength + level;
             xp = 0;
 
@@ -139,6 +139,7 @@ namespace IslandsOfDiscoveryTxtRPG
         {
             if (dead == true)
             {
+                Debug.Assert(Health == 0);
                 globals.gameOver = true;
                 CursorController.InputAreaCursor(2, 1);
                 Console.WriteLine("Game Over!");

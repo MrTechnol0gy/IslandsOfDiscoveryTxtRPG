@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace IslandsOfDiscoveryTxtRPG
 
             // Load difficulty settings into the Globals instance
             globals.LoadDifficultySettings(globals);
+            //Debug.Assert(globals.playerBasehealth != 0);
 
             // Pass the Globals instance to the components that need it
             Map map = new Map();

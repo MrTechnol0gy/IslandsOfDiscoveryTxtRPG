@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Text.Json;
 using System.Xml.Linq;
@@ -14,12 +15,12 @@ namespace IslandsOfDiscoveryTxtRPG
         public Random random = new Random();        
 
         // Player Information
-        public string playerName { get; set; }
-        public string playerCharacter { get; set; }
-        public string playerCorpse { get; set; }
-        public int playerLevel { get; set; }
-        public int playerBasehealth { get; set; }
-        public int playerBasestrength { get; set; }
+        public string PlayerName { get; set; }
+        public string PlayerCharacter { get; set; }
+        public string PlayerCorpse { get; set; }
+        public int PlayerLevel { get; set; }
+        public int PlayerBasehealth { get; set; }
+        public int PlayerBasestrength { get; set; }
         public bool isPlayerDead = false;
 
         // All Enemy Information
@@ -80,7 +81,7 @@ namespace IslandsOfDiscoveryTxtRPG
         public void LoadDifficultySettings(Globals target)
         {
             // Load settings from the appropriate JSON file based on the selected difficulty
-            string filePath = "DifficultySettings/IsleOfDiscoveryNormalDifficultySettings.txt";
+            string filePath = "DifficultySettings/IsleOfDiscoveryNormalDifficultySettings.json";
             string jsonData = File.ReadAllText(filePath);
             var settings = JsonSerializer.Deserialize<Globals>(jsonData);
 
@@ -92,12 +93,16 @@ namespace IslandsOfDiscoveryTxtRPG
         {
             // Copy settings from source to current instance
             // Player Data
-            playerName = source.playerName;
-            playerCharacter = source.playerCharacter;
-            playerCorpse = source.playerCorpse;
-            playerLevel = source.playerLevel;
-            playerBasehealth = source.playerBasehealth;
-            playerBasestrength = source.playerBasestrength;
+            PlayerName = source.PlayerName;
+            PlayerCharacter = source.PlayerCharacter;
+            PlayerCorpse = source.PlayerCorpse;
+            PlayerLevel = source.PlayerLevel;
+            PlayerBasehealth = source.PlayerBasehealth;
+            PlayerBasestrength = source.PlayerBasestrength;
+
+            Debug.Assert(PlayerBasehealth != 0);
+            Debug.Assert(source.PlayerBasehealth != 0);
+            Debug.Assert(source.treasureChestAmountToSpawn != 0);
 
             // Slime Data
             slimeName = source.slimeName;
@@ -143,17 +148,20 @@ namespace IslandsOfDiscoveryTxtRPG
             treasureName = source.treasureName;
             treasureCharacter = source.treasureCharacter;
             treasureSpawnPoint = source.treasureSpawnPoint.ToString()[0];
+            treasureChestAmountToSpawn = source.treasureChestAmountToSpawn;
             treasureBasehealth = source.treasureBasehealth;
             treasureBasestrength = source.treasureBasestrength;
             treasureXPValue = source.treasureXPValue;
             treasureEnergyToMove = source.treasureEnergyToMove;
 
             maxEnemies = CalculateMaxEnemies();
+            Debug.WriteLine("maxEnemies is " +  maxEnemies);
         }
 
         private int CalculateMaxEnemies()
         {
             int value = slimeAmountToSpawn + wyvernAmountToSpawn + seaserpentAmountToSpawn + dragonAmountToSpawn + treasureChestAmountToSpawn;
+            Debug.WriteLine("value is " +  value);
             return value;
         }
 

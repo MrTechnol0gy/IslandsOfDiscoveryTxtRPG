@@ -26,7 +26,7 @@ namespace IslandsOfDiscoveryTxtRPG
             oldPosY = posY;                        
             corpse = Globals.enemyCorpse;
             dead = false;
-            Health = basehealth;            
+            Health = 0;            
             Strength = basestrength;
             XpValue = 0;
             moveEnergy = 0;
